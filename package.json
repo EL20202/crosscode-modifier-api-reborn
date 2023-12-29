@@ -1,0 +1,20 @@
+{
+	"name": "modifier-api",
+    "displayName": "Modifier API \\c[3]Reborn\\c[0]",
+	"version": "0.2.0",
+	"description": "modifies things... but better!!!",
+
+    "preload": "./dist/preload.js",
+    "prestart": "./dist/prestart.js",
+
+    "ccmodDependencies": {},
+	
+    "devDependencies": {
+        "typescript": "5.1.6",
+        "ultimate-crosscode-typedefs": "el20202/ultimate-crosscode-typedefs"
+    },
+    "scripts": {
+        "build": "tsc --build",
+        "watch": "tsc --watch"
+    }
+}

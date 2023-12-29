@@ -1,0 +1,10 @@
+{
+    "id": "modifier-api",
+    "version": "0.2.0-alpha",
+
+    "title": "Modifier API \\c[3]Rewritten\\c[0]",
+    "description": "custom modifiers... reborn!",
+
+    "preload": "./dist/preload.js",
+    "prestart": "./dist/prestart.js"
+}
