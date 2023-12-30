@@ -40,6 +40,11 @@ declare global {
         let currentModifier: Optional<keyof sc.MODIFIERS>;
     }
 
+    namespace ig.GUI {
+        interface StatusBar {
+            customGfxCache: Record<string, image>;
+        }
+    }
     
     namespace sc {
         interface Modifier {
@@ -57,6 +62,12 @@ declare global {
             newIconGfx: Optional<ig.Image>;
             newIconOffX: number;
             newIconOffY: number;
+        }
+        interface StatusBarEntry {
+            gfx?: string | ig.Image;
+            iconX?: number;
+            iconY?: number;
+            barX?: number;
         }
 
         namespace CombatParams {
