@@ -4,7 +4,7 @@
 	"version": "0.2.0",
 	"description": "modifies things... but better!!!",
 
-    "preload": "./dist/preload.js",
+    "postload": "./dist/postload.js",
     "prestart": "./dist/prestart.js",
 
     "ccmodDependencies": {},

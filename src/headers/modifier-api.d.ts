@@ -36,10 +36,29 @@ declare global {
 
         let PreDamageCalcFuncs: Record<string, Functions.PreDamageCalcFunction>;
         let PostDamageCalcFuncs: Record<string, Functions.PostDamageCalcFunction>
+
+        let currentModifier: Optional<keyof sc.MODIFIERS>;
     }
 
     
     namespace sc {
+        interface Modifier {
+            altSheet?: string,
+            offX?: number,
+            offY?: number,
+        }
+
+        interface SimpleStatusDisplay {
+            newIconGfx: Optional<ig.Image>;
+            newIconOffX: number;
+            newIconOffY: number;
+        }
+        interface StatusParamBar {
+            newIconGfx: Optional<ig.Image>;
+            newIconOffX: number;
+            newIconOffY: number;
+        }
+
         namespace CombatParams {
             interface DamageResult {
                 callbacks: DamageCallback[];
