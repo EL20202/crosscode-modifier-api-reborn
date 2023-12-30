@@ -8,17 +8,20 @@ sc.CombatParams.inject({
     },
 
     getDamage(attackInfo, damageFactorMod, combatant, shieldResult, hitIgnore) {
-        let callbacks = [], modResult, elemFactor;
-        
-        let oldDmgFactor = attackInfo.damageFactor;
+        let callbacks = [], elemFactor;
+        //a shallow copy makes it safer to modify attackInfo.
+        attackInfo = {...attackInfo};
+
         let dmgFactor = attackInfo.damageFactor;
         if (!ig.perf.skipDmgModifiers) {
             for (let func of Object.values(ModifierAPI.PreDamageCalcFuncs)) {
                 let result = func(attackInfo, dmgFactor, combatant.getCombatantRoot(), shieldResult, hitIgnore, this);
-                attackInfo = result.attackInfo;
-                dmgFactor = result.damageFactor;
-                if(result.applyDamageCallback) {
-                    callbacks.push(result.applyDamageCallback);
+                if(result) {
+                    attackInfo = result.attackInfo ?? attackInfo;
+                    dmgFactor = result.damageFactor ?? dmgFactor;
+                    if(result.applyDamageCallback) {
+                        callbacks.push(result.applyDamageCallback);
+                    }
                 }
             }
 
@@ -29,16 +32,14 @@ sc.CombatParams.inject({
         
         attackInfo.damageFactor = dmgFactor;
         let damageResult = this.parent(attackInfo, damageFactorMod,  combatant, shieldResult, hitIgnore);
-        attackInfo.damageFactor = oldDmgFactor;
 
         for(let func of Object.values(ModifierAPI.PostDamageCalcFuncs)) {
             let result = func(damageResult, attackInfo, combatant, shieldResult, hitIgnore, this);
 
-            if(result.applyDamageCallback) {
+            if(result?.applyDamageCallback) {
                 callbacks.push(result.applyDamageCallback);
             }
         }
-
         damageResult.damage = Math.round(damageResult.damage)
         damageResult.callbacks = callbacks;
 
@@ -50,3 +51,6 @@ sc.CombatParams.inject({
         for(let callback of damageResult.callbacks) callback();
     }
 })
+
+ig.baked=true;
+ig.module("game.feature.combat.model.modifier-apply").defines(()=>{})

@@ -4,8 +4,8 @@ declare global {
     namespace ModifierAPI {
         namespace Functions {
             interface PreDamageReturn {
-                attackInfo: sc.AttackInfo;
-                damageFactor: number;
+                attackInfo?: sc.AttackInfo;
+                damageFactor?: number;
                 applyDamageCallback: DamageCallback | null;
             }
 
@@ -22,7 +22,7 @@ declare global {
                 shieldResult: sc.SHIELD_RESULT | undefined,
                 hitIgnore: boolean | undefined,
                 params: sc.CombatParams,
-            ) => PreDamageReturn;
+            ) => Optional<PreDamageReturn>;
 
             type PostDamageCalcFunction = (
                 damageResult: sc.CombatParams.DamageResult,
@@ -31,7 +31,7 @@ declare global {
                 shieldResult: sc.SHIELD_RESULT | undefined,
                 hitIgnore: boolean | undefined,
                 params: sc.CombatParams,
-            ) => PostDamageReturn;
+            ) => Optional<PostDamageReturn>;
         }
 
         let PreDamageCalcFuncs: Record<string, Functions.PreDamageCalcFunction>;

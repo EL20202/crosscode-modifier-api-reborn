@@ -89,3 +89,6 @@ sc.StatusParamBar.inject({
         }
     }
 })
+
+ig.baked=true;
+ig.module("game.feature.combat.model.modifier-gui").defines(()=>{})

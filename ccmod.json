@@ -1,9 +1,9 @@
 {
     "id": "modifier-api",
-    "version": "0.2.0-alpha",
+    "version": "0.1.1",
 
-    "title": "Modifier API \\c[3]Rewritten\\c[0]",
-    "description": "custom modifiers... reborn!",
+    "title": "Modifier API \\c[3]Reborn\\c[0]",
+    "description": "Enables easier creation and usage of custom modifiers and statuses.",
 
     "postload": "./dist/postload.js",
     "prestart": "./dist/prestart.js"

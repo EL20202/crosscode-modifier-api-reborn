@@ -11,8 +11,9 @@ ig.GUI.StatusBar.inject({
             if(entry.timer < 0.1) {
                 scale = entry.timer / 0.1;
             }
-
+            let didTransform = false;
             if(scale != 1) {
+                didTransform = true;
                 renderer.addTransform().setPivot(x, y + 2).setScale(1, scale)
             }
             let i = 24;
@@ -41,8 +42,11 @@ ig.GUI.StatusBar.inject({
                 }
                 renderer.addGfx(cache[type], x + (i - 1), y - 2, 25, 0, 7, 8)
             }
+
+            if(didTransform) renderer.undoTransform();
         } else this.parent(renderer, x, y, type);        
     }
 })
 
-ig.GUI
+ig.baked=true;
+ig.module("game.feature.combat.gui.custom-status-bar").defines(()=>{})
