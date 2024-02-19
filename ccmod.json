@@ -4,7 +4,7 @@
 
     "title": "Modifier API \\c[3]Reborn\\c[0]",
     "description": "Enables easier creation and usage of custom modifiers and statuses.",
-    "repository": "https://github.com/EL20202/crosscode-modifier-api-reborn",
+    "repository": "https://github.com/elluminance/crosscode-modifier-api-reborn",
     "tags": ["library"],
     "authors": "elluminance",
 
